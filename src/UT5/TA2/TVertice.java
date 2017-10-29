@@ -192,18 +192,20 @@ public TCaminos todosLosCaminos(Comparable etVertDest, TCamino caminoPrevio, TCa
     
     @Override
     public String bea(){
-       String tempStr ="";
+        int contador = 0;
+        String tempStr ="";
         Queue<TVertice> cola = new LinkedList<>();
         this.setVisitado(true);
         cola.add(this);
         tempStr += " " + this.getEtiqueta();
-        while (!cola.isEmpty()) {            
+        while (!cola.isEmpty()) { 
+            contador++;
             TVertice v = cola.poll(); //En v queda el primer elemento de la cola
             for (TAdyacencia i : v.adyacentes) {               
                 if (!i.getDestino().getVisitado()){
                     i.getDestino().setVisitado(true);
                     cola.add(i.getDestino());
-                    tempStr += " " + i.getDestino().getEtiqueta();
+                    tempStr += " " + contador + i.getDestino().getEtiqueta();
                 }
             }
         }

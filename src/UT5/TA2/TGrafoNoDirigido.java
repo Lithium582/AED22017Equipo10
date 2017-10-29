@@ -25,6 +25,21 @@ public class TGrafoNoDirigido extends TGrafoDirigido {
         //aristas.setAristas(arista);
     }
     
+    public boolean insertarArista(TArista arista) {
+        if ((arista.getEtiquetaOrigen()!= null) && (arista.getEtiquetaDestino() != null)) {
+            TVertice vertOrigen = buscarVertice(arista.getEtiquetaOrigen());
+            TVertice vertDestino = buscarVertice(arista.getEtiquetaDestino());
+            if ((vertOrigen != null) && (vertDestino != null)) {
+                return vertOrigen.insertarAdyacencia(arista.getCosto(), vertDestino) && vertDestino.insertarAdyacencia(arista.getCosto(), vertOrigen);
+            }
+        }
+        return false;
+    }
+    
+    private TVertice buscarVertice(Comparable unaEtiqueta) {
+        return getVertices().get(unaEtiqueta);
+    }
+    
     public LinkedList<TVertice> metodoPrim(LinkedList<TArista> pAristas){
         
         return new LinkedList<TVertice>();
@@ -66,7 +81,7 @@ public class TGrafoNoDirigido extends TGrafoDirigido {
         } else {
             for (TVertice vertV : this.getVertices().values()) {
                 if (!vertV.getVisitado()) {
-                   return vertV.bea();
+                   return vertV.bea();//Lo hace para el primero nada más por el return.
                 }
             }
         }
@@ -78,17 +93,17 @@ public class TGrafoNoDirigido extends TGrafoDirigido {
         if (this.getVertices().isEmpty()) {
             return "El grafo está vacio";
         } else {
-            for (TVertice vertV : this.getVertices().values()) {
+            /*for (TVertice vertV : this.getVertices().values()) {
                 if (!vertV.getVisitado()) {
                    return vertV.bea();
                 }
-            }
+            }*/
             
-            /*TVertice verticeBuscado = this.getVertices().get(etiquetaInicial);
+            TVertice verticeBuscado = this.getVertices().get(etiquetaInicial);
             
-            return verticeBuscado.bea();*/
+            return verticeBuscado.bea();
         }
         
-        return "HOLU";
+        //return "HOLU";
     }
 }

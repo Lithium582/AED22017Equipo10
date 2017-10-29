@@ -12,18 +12,16 @@ public class PruebaGrafo {
                 false, TGrafoNoDirigido.class);
 
         Object[] etiquetasarray = gd.getEtiquetasOrdenado();
-        //String bean = gd.bea();
+        //String bean = gd.bea(); //Lo hace para el primero.
         String bean5 = gd.bea("f");
         
         //System.out.println(bean);
         System.out.println(bean5);
    
         //gd.desvisitarVertices();
-   /*
-        if (gd.tieneCiclo()) {
-            System.out.println("tiene ciclos");
-        } else {
-            System.out.println("no tiene ciclos");
-        }*/
+   
+   
+        /*TVertice verta = gd.getVertices().get("a");
+        System.out.println(verta.bea());*/
     }
 }
