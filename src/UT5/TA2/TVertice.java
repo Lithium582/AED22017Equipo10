@@ -201,7 +201,7 @@ public TCaminos todosLosCaminos(Comparable etVertDest, TCamino caminoPrevio, TCa
         while (!cola.isEmpty()) { 
             contador++;
             TVertice v = cola.poll(); //En v queda el primer elemento de la cola
-            for (TAdyacencia i : v.adyacentes) {               
+            for (TAdyacencia i : v.adyacentes) {
                 if (!i.getDestino().getVisitado()){
                     i.getDestino().setVisitado(true);
                     cola.add(i.getDestino());
@@ -209,7 +209,28 @@ public TCaminos todosLosCaminos(Comparable etVertDest, TCamino caminoPrevio, TCa
                 }
             }
         }
+        
         return tempStr;
-            
+    }
+    
+    public boolean existeUnCamino(Comparable etVertDest) {
+        this.setVisitado(true);
+        boolean retorno = false;
+        for (TAdyacencia adyacencia : this.getAdyacentes()) {
+            if (retorno) {
+                break;
+            }
+            TVertice destino = adyacencia.getDestino();
+            if (!destino.getVisitado()) {
+                if (destino.getEtiqueta().compareTo(etVertDest) == 0) {
+                    retorno = true;
+                } else {
+                    retorno = destino.existeUnCamino(etVertDest);
+                }
+            }
+        }
+
+        this.setVisitado(false);
+        return retorno;
     }
 }
