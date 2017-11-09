@@ -18,7 +18,7 @@ public class TClasificador {
 		case METODO_CLASIFICACION_INSERCION:
 			return ordenarPorInsercion(datosParaClasificar);
 		case METODO_CLASIFICACION_SHELL:
-			return ordenarPorShell(datosParaClasificar);
+			return ordenarPorShellB(datosParaClasificar);
 		case METODO_CLASIFICACION_BURBUJA:
 			return ordenarPorBurbuja(datosParaClasificar);
 		default:
@@ -57,6 +57,28 @@ public class TClasificador {
 				}
 			}
 		}
+		return datosParaClasificar;
+	}
+        
+        private int[] ordenarPorShellB(int[] datosParaClasificar) {
+		int pIzq;
+                int cantValores = datosParaClasificar.length;
+                int distancia = cantValores / 2;
+
+                while (distancia > 0){
+                    
+                    for (int i = distancia; i < cantValores; i++){
+                        int pDer = datosParaClasificar[i];
+                        
+                        for (pIzq = i; (pIzq >= distancia) && (datosParaClasificar[pIzq - distancia] > pDer); pIzq -= distancia){
+                            datosParaClasificar[pIzq] = datosParaClasificar[pIzq - distancia];
+                        }
+                        
+                        datosParaClasificar[pIzq] = pDer;
+                    }
+                    
+                    distancia = distancia / 2;
+                }
 		return datosParaClasificar;
 	}
 
