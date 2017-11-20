@@ -41,9 +41,9 @@ public class Main {
         int[] des300 = gnd.generarDatosDescendentes(300);
         int[] ale300 = gnd.generarDatosAleatorios(300);
         
-        int[] asc10000 = gnd.generarDatosAscendentes(10000);
-        int[] des10000 = gnd.generarDatosDescendentes(10000);
-        int[] ale10000 = gnd.generarDatosAleatorios(10000);
+        int[] asc10000 = gnd.generarDatosAscendentes(30000);
+        int[] des10000 = gnd.generarDatosDescendentes(30000);
+        int[] ale10000 = gnd.generarDatosAleatorios(30000);
         
         TClasificador clasifica = new TClasificador();
         
