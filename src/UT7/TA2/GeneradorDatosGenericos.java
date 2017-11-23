@@ -1,6 +1,5 @@
 package UT7.TA2;
 
-import UT6.TA05.*;
 import UT6.TA041.*;
 import UT6.TA012.*;
 import UT6.TA01.*;

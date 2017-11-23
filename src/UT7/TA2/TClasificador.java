@@ -1,6 +1,5 @@
 package UT7.TA2;
 
-import UT6.TA05.*;
 import UT6.TA041.*;
 import UT6.TA012.*;
 import UT6.TA01.*;
@@ -81,7 +80,7 @@ public class TClasificador {
             int r = primero;
             while (r <= ultimo / 2) {
                 if (ultimo == 2 * r) { //r tiene un hijo solo
-                    if (datosParaClasificar[r] > datosParaClasificar[r * 2]) { //Eggog
+                    if (datosParaClasificar[r] < datosParaClasificar[r * 2]) { //Eggog
                         intercambiar(datosParaClasificar, r, 2 * r);
                         //r = 2; //WHAAAAAT?
                     } else {
@@ -89,12 +88,12 @@ public class TClasificador {
                     }
                 } else { //r tiene 2 hijos
                     int posicionIntercambio = 0;
-                    if (datosParaClasificar[2 * r] > datosParaClasificar[2 * r + 1]) {
+                    if (datosParaClasificar[2 * r] < datosParaClasificar[2 * r + 1]) {
                         posicionIntercambio = 2 * r + 1;
                     } else {
                         posicionIntercambio = 2 * r;
                     }
-                    if (datosParaClasificar[r] > datosParaClasificar[posicionIntercambio]) { //Eggog
+                    if (datosParaClasificar[r] < datosParaClasificar[posicionIntercambio]) { //Eggog
                         intercambiar(datosParaClasificar, r, posicionIntercambio);
                         r = posicionIntercambio;
                     } else {
